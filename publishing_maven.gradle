@@ -2,10 +2,10 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 version = publishVersion
-group = "skin.support"
+group = "lollypop.skin.support"
 
-def siteUrl = 'https://github.com/ximsfei/Android-skin-support'
-def gitUrl = 'https://github.com/ximsfei/Android-skin-support.git'
+def siteUrl = 'https://github.com/MyLifeMyTravel/Android-skin-support'
+def gitUrl = 'https://github.com/MyLifeMyTravel/Android-skin-support.git'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -20,7 +20,7 @@ bintray {
         name = moduleName
         desc = descContent
         websiteUrl = siteUrl
-        issueTrackerUrl = 'https://github.com/ximsfei/Android-skin-support/issues'
+        issueTrackerUrl = 'https://github.com/MyLifeMyTravel/Android-skin-support/issues'
         vcsUrl = gitUrl
         licenses = ['MIT']
         labels = ['skin', 'support', 'theme', 'android']
@@ -38,19 +38,19 @@ install {
                 licenses {
                     license {
                         name 'MIT'
-                        url 'https://github.com/ximsfei/Android-skin-support/blob/master/LICENSE'
+                        url 'https://github.com/MyLifeMyTravel/Android-skin-support/blob/master/LICENSE'
                     }
                 }
                 developers {
                     developer {
-                        id 'ximsfei'
-                        name 'Pengfeng Wang'
-                        email 'ximsfei@gmail.com'
+                        id 'MyLifeMyTravel'
+                        name 'MyLifeMyTravel'
+                        email '1025263614lsj@gmail.com'
                     }
                 }
                 scm {
-                    connection 'https://github.com/ximsfei/Android-skin-support.git'
-                    developerConnection 'https://github.com/ximsfei/Android-skin-support.git'
+                    connection 'https://github.com/MyLifeMyTravel/Android-skin-support.git'
+                    developerConnection 'https://github.com/MyLifeMyTravel/Android-skin-support.git'
                     url siteUrl
 
                 }

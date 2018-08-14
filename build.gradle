@@ -24,6 +24,10 @@ allprojects {
             url 'https://maven.google.com/'
             name 'Google'
         }
+
+        maven {
+            url 'https://dl.bintray.com/beyondbright/skin-support'
+        }
     }
 }
 
@@ -41,5 +45,5 @@ ext {
 
     glideVersion = "4.7.1"
 
-    skinSupportVersion = "3.1.0-beta1"
+    skinSupportVersion = "1.0.2"
 }
