@@ -2,11 +2,15 @@
 <resources>
     <declare-styleable name="SkinBackgroundHelper">
         <attr name="android:background" />
+        <attr name="android:backgroundTint" />
+        <attr name="backgroundTint" />
     </declare-styleable>
 
     <declare-styleable name="SkinCompatImageView">
         <attr name="android:src" />
         <attr name="srcCompat" />
+        <attr name="android:tint" />
+        <attr name="tint" />
     </declare-styleable>
 
     <declare-styleable name="SkinCompatTextHelper">
@@ -20,6 +24,7 @@
     </declare-styleable>
 
     <declare-styleable name="SkinTextAppearance">
+        <attr name="android:text" />
         <attr name="android:textSize" />
         <attr name="android:textColor" />
         <attr name="android:textColorHint" />

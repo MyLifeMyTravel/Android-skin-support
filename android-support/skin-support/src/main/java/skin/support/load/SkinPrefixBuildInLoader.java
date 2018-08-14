@@ -25,6 +25,11 @@ public class SkinPrefixBuildInLoader implements SkinLoaderStrategy {
     }
 
     @Override
+    public String getText(Context context, String skinName, int resId) {
+        return null;
+    }
+
+    @Override
     public ColorStateList getColor(Context context, String skinName, int resId) {
         return null;
     }

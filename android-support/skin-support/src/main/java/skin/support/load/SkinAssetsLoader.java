@@ -24,6 +24,11 @@ public class SkinAssetsLoader extends SkinSDCardLoader {
     }
 
     @Override
+    public String getText(Context context, String skinName, int resId) {
+        return null;
+    }
+
+    @Override
     public int getType() {
         return SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS;
     }

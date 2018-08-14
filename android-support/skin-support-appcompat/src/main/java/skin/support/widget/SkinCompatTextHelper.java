@@ -31,6 +31,7 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
 
     private int mTextColorResId = INVALID_ID;
     private int mTextColorHintResId = INVALID_ID;
+    private int mTextResId = INVALID_ID;
     protected int mDrawableBottomResId = INVALID_ID;
     protected int mDrawableLeftResId = INVALID_ID;
     protected int mDrawableRightResId = INVALID_ID;
@@ -70,6 +71,9 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
                 mTextColorHintResId = a.getResourceId(
                         R.styleable.SkinTextAppearance_android_textColorHint, INVALID_ID);
             }
+            if (a.hasValue(R.styleable.SkinTextAppearance_android_text)) {
+                mTextResId = a.getResourceId(R.styleable.SkinTextAppearance_android_text, INVALID_ID);
+            }
             a.recycle();
         }
 
@@ -81,6 +85,9 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
         if (a.hasValue(R.styleable.SkinTextAppearance_android_textColorHint)) {
             mTextColorHintResId = a.getResourceId(
                     R.styleable.SkinTextAppearance_android_textColorHint, INVALID_ID);
+        }
+        if (a.hasValue(R.styleable.SkinTextAppearance_android_text)) {
+            mTextResId = a.getResourceId(R.styleable.SkinTextAppearance_android_text, INVALID_ID);
         }
         a.recycle();
         applySkin();
@@ -120,6 +127,19 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
             try {
                 ColorStateList color = SkinCompatResources.getColorStateList(mView.getContext(), mTextColorResId);
                 mView.setTextColor(color);
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    private void applyTextResource() {
+        mTextResId = checkResourceId(mTextResId);
+        if (mTextResId != INVALID_ID) {
+            // TODO: HTC_U-3u OS:8.0上调用framework的getColorStateList方法，有可能抛出异常，暂时没有找到更好的解决办法.
+            // issue: https://github.com/ximsfei/Android-skin-support/issues/110
+            try {
+                String text = SkinCompatResources.getString(mView.getContext(), mTextResId);
+                mView.setText(text);
             } catch (Exception e) {
             }
         }
@@ -182,5 +202,6 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
         applyCompoundDrawablesRelativeResource();
         applyTextColorResource();
         applyTextColorHintResource();
+        applyTextResource();
     }
 }

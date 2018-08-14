@@ -7,7 +7,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.LayoutInflaterCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -16,11 +19,11 @@ import java.util.WeakHashMap;
 import skin.support.SkinCompatManager;
 import skin.support.annotation.Skinable;
 import skin.support.content.res.SkinCompatResources;
+import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
 import skin.support.widget.SkinCompatSupportable;
-import skin.support.content.res.SkinCompatThemeUtils;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;
 import static skin.support.widget.SkinCompatHelper.checkResourceId;
@@ -56,6 +59,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
         if (isContextSkinEnable(activity)) {
             installLayoutFactory(activity);
+            updateStatusBarColor(activity);
             updateWindowBackground(activity);
             if (activity instanceof SkinCompatSupportable) {
                 ((SkinCompatSupportable) activity).applySkin();
@@ -138,6 +142,26 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
         return observer;
     }
 
+    private void updateStatusBarColor(Activity activity) {
+        if (!SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
+            return;
+        }
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                //获取状态栏颜色
+                TypedValue typedValue = new TypedValue();
+                activity.getTheme().resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
+                window.setStatusBarColor(SkinCompatResources.getColor(activity, typedValue.resourceId));
+                //底部导航栏
+                window.setNavigationBarColor(SkinCompatResources.getColor(activity, typedValue.resourceId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void updateWindowBackground(Activity activity) {
         if (SkinCompatManager.getInstance().isSkinWindowBackgroundEnable()) {
             int windowBackgroundResId = SkinCompatThemeUtils.getWindowBackgroundResId(activity);
@@ -190,6 +214,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
                 return;
             }
             if (mContext instanceof Activity && isContextSkinEnable(mContext)) {
+                updateStatusBarColor((Activity) mContext);
                 updateWindowBackground((Activity) mContext);
             }
             getSkinDelegate(mContext).applySkin();

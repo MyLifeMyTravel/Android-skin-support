@@ -92,6 +92,16 @@ public class SkinCompatManager extends SkinObservable {
         String getTargetResourceEntryName(Context context, String skinName, int resId);
 
         /**
+         * 开发者可以拦截应用中的资源ID，返回对应string值。
+         *
+         * @param context  {@link Context}
+         * @param skinName 皮肤包名称.
+         * @param resId    应用中需要换肤的资源ID.
+         * @return 获得拦截后的颜色值，添加到ColorStateList的defaultColor中。不需要拦截，则返回空
+         */
+        String getText(Context context, String skinName, int resId);
+
+        /**
          * 开发者可以拦截应用中的资源ID，返回对应color值。
          *
          * @param context  {@link Context}

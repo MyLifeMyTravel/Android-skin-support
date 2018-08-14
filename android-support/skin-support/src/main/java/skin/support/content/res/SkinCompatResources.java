@@ -122,6 +122,22 @@ public class SkinCompatResources {
         }
     }
 
+    private String getSkinString(Context context, int resId) {
+        if (mStrategy != null) {
+            String text = mStrategy.getText(context, mSkinName, resId);
+            if (!TextUtils.isEmpty(text)) {
+                return text;
+            }
+        }
+        if (!isDefaultSkin) {
+            int targetResId = getTargetResId(context, resId);
+            if (targetResId != 0) {
+                return mResources.getString(targetResId);
+            }
+        }
+        return context.getResources().getString(resId);
+    }
+
     private int getSkinColor(Context context, int resId) {
         if (!SkinCompatUserThemeManager.get().isColorEmpty()) {
             ColorStateList colorStateList = SkinCompatUserThemeManager.get().getColorStateList(resId);
@@ -220,6 +236,10 @@ public class SkinCompatResources {
             }
         }
         context.getResources().getValue(resId, outValue, resolveRefs);
+    }
+
+    public static String getString(Context context, int resId) {
+        return getInstance().getSkinString(context, resId);
     }
 
     public static int getColor(Context context, int resId) {
