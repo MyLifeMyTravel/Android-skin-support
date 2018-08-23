@@ -18,6 +18,7 @@ import java.util.WeakHashMap;
 
 import skin.support.SkinCompatManager;
 import skin.support.annotation.Skinable;
+import skin.support.annotation.Skindisable;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
@@ -175,9 +176,10 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private boolean isContextSkinEnable(Context context) {
-        return SkinCompatManager.getInstance().isSkinAllActivityEnable()
+        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
+        return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
                 || context.getClass().getAnnotation(Skinable.class) != null
-                || context instanceof SkinCompatSupportable;
+                || context instanceof SkinCompatSupportable);
     }
 
     private class LazySkinObserver implements SkinObserver {
