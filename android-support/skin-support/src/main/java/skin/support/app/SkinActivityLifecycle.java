@@ -24,6 +24,7 @@ import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
+import skin.support.widget.SkinCompatNotSupportable;
 import skin.support.widget.SkinCompatSupportable;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;
@@ -176,7 +177,8 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private boolean isContextSkinEnable(Context context) {
-        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
+        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null
+                || context instanceof SkinCompatNotSupportable;
         return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
                 || context.getClass().getAnnotation(Skinable.class) != null
                 || context instanceof SkinCompatSupportable);
