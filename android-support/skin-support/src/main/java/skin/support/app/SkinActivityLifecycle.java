@@ -1,5 +1,9 @@
 package skin.support.app;
 
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
+import java.util.WeakHashMap;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -11,11 +15,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
-
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.util.WeakHashMap;
-
 import skin.support.SkinCompatManager;
 import skin.support.annotation.Skinable;
 import skin.support.annotation.Skindisable;
@@ -157,7 +156,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
                 activity.getTheme().resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
                 window.setStatusBarColor(SkinCompatResources.getColor(activity, typedValue.resourceId));
                 //底部导航栏
-                window.setNavigationBarColor(SkinCompatResources.getColor(activity, typedValue.resourceId));
+                //window.setNavigationBarColor(SkinCompatResources.getColor(activity, typedValue.resourceId));
             }
         } catch (Exception e) {
             e.printStackTrace();
