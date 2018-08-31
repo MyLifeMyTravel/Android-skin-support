@@ -25,6 +25,7 @@ import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
 import skin.support.widget.SkinCompatActivitySupportable;
+import skin.support.widget.SkinCompatStatusBarSupportable;
 import skin.support.widget.SkinCompatSupportable;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;
@@ -145,7 +146,9 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private void updateStatusBarColor(Activity activity) {
-        if (activity.getClass().getAnnotation(SkinStatusBarDisable.class) != null
+        boolean isSupportSkin = activity instanceof SkinCompatStatusBarSupportable
+            && ((SkinCompatStatusBarSupportable) activity).isSupportStatusBar();
+        if (!isSupportSkin || activity.getClass().getAnnotation(SkinStatusBarDisable.class) != null
             || !SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
             return;
         }
@@ -180,8 +183,10 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     private boolean isContextSkinEnable(Context context) {
         boolean isSupportSkin = context instanceof SkinCompatActivitySupportable
             && ((SkinCompatActivitySupportable) context).isSupportSkin();
-        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null
-                || !isSupportSkin;
+        if (isSupportSkin) {
+          return true;
+        }
+        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
         return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
                 || context.getClass().getAnnotation(Skinable.class) != null
                 || context instanceof SkinCompatSupportable);
