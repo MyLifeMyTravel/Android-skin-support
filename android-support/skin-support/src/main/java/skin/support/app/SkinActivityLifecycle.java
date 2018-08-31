@@ -146,8 +146,10 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private void updateStatusBarColor(Activity activity) {
-        boolean isSupportSkin = activity instanceof SkinCompatStatusBarSupportable
-            && ((SkinCompatStatusBarSupportable) activity).isSupportStatusBar();
+        boolean isSupportSkin = true;
+        if (activity instanceof SkinCompatStatusBarSupportable) {
+            isSupportSkin = ((SkinCompatStatusBarSupportable) activity).isSupportStatusBar();
+        }
         if (!isSupportSkin || activity.getClass().getAnnotation(SkinStatusBarDisable.class) != null
             || !SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
             return;
