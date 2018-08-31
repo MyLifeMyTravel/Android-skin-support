@@ -181,7 +181,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
         boolean isSupportSkin = context instanceof SkinCompatActivitySupportable
             && ((SkinCompatActivitySupportable) context).isSupportSkin();
         boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null
-                || isSupportSkin;
+                || !isSupportSkin;
         return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
                 || context.getClass().getAnnotation(Skinable.class) != null
                 || context instanceof SkinCompatSupportable);
