@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
 import skin.support.SkinCompatManager;
+import skin.support.annotation.SkinStatusBarDisable;
 import skin.support.annotation.Skinable;
 import skin.support.annotation.Skindisable;
 import skin.support.content.res.SkinCompatResources;
@@ -23,7 +24,7 @@ import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
-import skin.support.widget.SkinCompatNotSupportable;
+import skin.support.widget.SkinCompatActivitySupportable;
 import skin.support.widget.SkinCompatSupportable;
 
 import static skin.support.widget.SkinCompatHelper.INVALID_ID;
@@ -144,7 +145,8 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private void updateStatusBarColor(Activity activity) {
-        if (!SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
+        if (activity.getClass().getAnnotation(SkinStatusBarDisable.class) != null
+            || !SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
             return;
         }
         try {
@@ -176,8 +178,10 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private boolean isContextSkinEnable(Context context) {
+        boolean isSupportSkin = context instanceof SkinCompatActivitySupportable
+            && ((SkinCompatActivitySupportable) context).isSupportSkin();
         boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null
-                || context instanceof SkinCompatNotSupportable;
+                || isSupportSkin;
         return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
                 || context.getClass().getAnnotation(Skinable.class) != null
                 || context instanceof SkinCompatSupportable);
