@@ -18,6 +18,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import skin.support.annotation.Skinable;
+import skin.support.annotation.Skindisable;
 import skin.support.app.SkinActivityLifecycle;
 import skin.support.app.SkinLayoutInflater;
 import skin.support.app.SkinWrapper;
@@ -28,6 +30,8 @@ import skin.support.load.SkinPrefixBuildInLoader;
 import skin.support.observe.SkinObservable;
 import skin.support.utils.SkinPreference;
 import skin.support.content.res.SkinCompatResources;
+import skin.support.widget.SkinCompatActivitySupportable;
+import skin.support.widget.SkinCompatSupportable;
 
 public class SkinCompatManager extends SkinObservable {
     public static final int SKIN_LOADER_STRATEGY_NONE = -1;
@@ -469,5 +473,15 @@ public class SkinCompatManager extends SkinObservable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean isContextSkinEnable(Context context) {
+        if (context instanceof SkinCompatActivitySupportable) {
+            return ((SkinCompatActivitySupportable) context).isSupportSkin();
+        }
+        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
+        return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
+            || context.getClass().getAnnotation(Skinable.class) != null
+            || context instanceof SkinCompatSupportable);
     }
 }

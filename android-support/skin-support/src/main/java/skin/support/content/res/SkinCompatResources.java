@@ -1,5 +1,8 @@
 package skin.support.content.res;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -9,10 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.AnyRes;
 import android.text.TextUtils;
 import android.util.TypedValue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import skin.support.SkinCompatManager;
 
 public class SkinCompatResources {
@@ -123,6 +122,9 @@ public class SkinCompatResources {
     }
 
     private String getSkinString(Context context, int resId) {
+        if (!SkinCompatManager.getInstance().isContextSkinEnable(context)) {
+            return context.getResources().getString(resId);
+        }
         if (mStrategy != null) {
             String text = mStrategy.getText(context, mSkinName, resId);
             if (!TextUtils.isEmpty(text)) {
@@ -139,6 +141,9 @@ public class SkinCompatResources {
     }
 
     private int getSkinColor(Context context, int resId) {
+        if (!SkinCompatManager.getInstance().isContextSkinEnable(context)) {
+            return context.getResources().getColor(resId);
+        }
         if (!SkinCompatUserThemeManager.get().isColorEmpty()) {
             ColorStateList colorStateList = SkinCompatUserThemeManager.get().getColorStateList(resId);
             if (colorStateList != null) {
@@ -161,6 +166,9 @@ public class SkinCompatResources {
     }
 
     private ColorStateList getSkinColorStateList(Context context, int resId) {
+        if (!SkinCompatManager.getInstance().isContextSkinEnable(context)) {
+            return context.getResources().getColorStateList(resId);
+        }
         if (!SkinCompatUserThemeManager.get().isColorEmpty()) {
             ColorStateList colorStateList = SkinCompatUserThemeManager.get().getColorStateList(resId);
             if (colorStateList != null) {
@@ -183,6 +191,9 @@ public class SkinCompatResources {
     }
 
     private Drawable getSkinDrawable(Context context, int resId) {
+        if (!SkinCompatManager.getInstance().isContextSkinEnable(context)) {
+            return context.getResources().getDrawable(resId);
+        }
         if (!SkinCompatUserThemeManager.get().isColorEmpty()) {
             ColorStateList colorStateList = SkinCompatUserThemeManager.get().getColorStateList(resId);
             if (colorStateList != null) {

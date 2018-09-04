@@ -17,14 +17,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import skin.support.SkinCompatManager;
 import skin.support.annotation.SkinStatusBarDisable;
-import skin.support.annotation.Skinable;
-import skin.support.annotation.Skindisable;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatThemeUtils;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 import skin.support.utils.Slog;
-import skin.support.widget.SkinCompatActivitySupportable;
 import skin.support.widget.SkinCompatStatusBarSupportable;
 import skin.support.widget.SkinCompatSupportable;
 
@@ -183,13 +180,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private boolean isContextSkinEnable(Context context) {
-        if (context instanceof SkinCompatActivitySupportable) {
-            return ((SkinCompatActivitySupportable) context).isSupportSkin();
-        }
-        boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
-        return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
-                || context.getClass().getAnnotation(Skinable.class) != null
-                || context instanceof SkinCompatSupportable);
+        return SkinCompatManager.getInstance().isContextSkinEnable(context);
     }
 
     private class LazySkinObserver implements SkinObserver {
