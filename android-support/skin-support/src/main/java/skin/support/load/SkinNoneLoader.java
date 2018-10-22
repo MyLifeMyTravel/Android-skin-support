@@ -14,6 +14,11 @@ public class SkinNoneLoader implements SkinLoaderStrategy {
     }
 
     @Override
+    public String loadResInBackground(Context context, String resName) {
+        return "";
+    }
+
+    @Override
     public String getTargetResourceEntryName(Context context, String skinName, int resId) {
         return "";
     }

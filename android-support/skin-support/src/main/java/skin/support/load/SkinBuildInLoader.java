@@ -20,6 +20,11 @@ public class SkinBuildInLoader implements SkinLoaderStrategy {
     }
 
     @Override
+    public String loadResInBackground(Context context, String resName) {
+        return "";
+    }
+
+    @Override
     public String getTargetResourceEntryName(Context context, String skinName, int resId) {
         return context.getResources().getResourceEntryName(resId) + "_" + skinName;
     }

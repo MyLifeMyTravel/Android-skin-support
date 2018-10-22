@@ -23,6 +23,7 @@ import skin.support.annotation.Skindisable;
 import skin.support.app.SkinActivityLifecycle;
 import skin.support.app.SkinLayoutInflater;
 import skin.support.app.SkinWrapper;
+import skin.support.content.res.SkinCompatExtraResources;
 import skin.support.load.SkinAssetsLoader;
 import skin.support.load.SkinBuildInLoader;
 import skin.support.load.SkinNoneLoader;
@@ -84,6 +85,15 @@ public class SkinCompatManager extends SkinObservable {
          * @return 加载成功，返回皮肤包名称；失败，则返回空。
          */
         String loadSkinInBackground(Context context, String skinName);
+
+        /**
+         * 加载独立资源包.
+         *
+         * @param context {@link Context}
+         * @param resName 资源包名称.
+         * @return 加载成功，返回资源包名称；失败，则返回空。
+         */
+        String loadResInBackground(Context context, String resName);
 
         /**
          * 根据应用中的资源ID，获取皮肤包相应资源的资源名.
@@ -267,6 +277,16 @@ public class SkinCompatManager extends SkinObservable {
     }
 
     /**
+     * 设置额外的资源包
+     */
+    public AsyncTask loadExtraRes(String resName) {
+        SkinPreference.getInstance().setExtraResName(resName).commitEditor();
+        String skin = SkinPreference.getInstance().getSkinName();
+        int strategy = SkinPreference.getInstance().getSkinStrategy();
+        return loadSkin(skin, null, strategy);
+    }
+
+    /**
      * 设置是否所有Activity都换肤.
      *
      * @param enable true: 所有Activity都换肤; false: 添加注解Skinable或实现SkinCompatSupportable的Activity支持换肤.
@@ -316,7 +336,7 @@ public class SkinCompatManager extends SkinObservable {
      *
      * @return
      */
-    public AsyncTask loadSkin() {
+    public AsyncTask load() {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
         if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
@@ -331,7 +351,7 @@ public class SkinCompatManager extends SkinObservable {
      * @param listener 皮肤包加载监听.
      * @return
      */
-    public AsyncTask loadSkin(SkinLoaderListener listener) {
+    public AsyncTask load(SkinLoaderListener listener) {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
         if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
@@ -406,6 +426,13 @@ public class SkinCompatManager extends SkinObservable {
                 mLoading = true;
             }
             try {
+                //加载额外的资源包
+                String extraRes = mStrategy.loadResInBackground(mAppContext,
+                        SkinPreference.getInstance().getExtraResName());
+                if (TextUtils.isEmpty(extraRes)) {
+                    SkinCompatExtraResources.getInstance().reset(mStrategy);
+                }
+
                 if (params.length == 1) {
                     String skinName = mStrategy.loadSkinInBackground(mAppContext, params[0]);
                     if (TextUtils.isEmpty(skinName)) {
@@ -481,7 +508,7 @@ public class SkinCompatManager extends SkinObservable {
         }
         boolean skinDisable = context.getClass().getAnnotation(Skindisable.class) != null;
         return !skinDisable && (SkinCompatManager.getInstance().isSkinAllActivityEnable()
-            || context.getClass().getAnnotation(Skinable.class) != null
-            || context instanceof SkinCompatSupportable);
+                || context.getClass().getAnnotation(Skinable.class) != null
+                || context instanceof SkinCompatSupportable);
     }
 }

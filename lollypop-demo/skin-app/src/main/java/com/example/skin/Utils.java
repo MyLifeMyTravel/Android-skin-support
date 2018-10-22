@@ -1,4 +1,4 @@
-package skin.support.load;
+package com.example.skin;
 
 import android.content.Context;
 
@@ -8,37 +8,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import skin.support.SkinCompatManager;
 import skin.support.utils.SkinConstants;
 import skin.support.utils.SkinFileUtils;
 
-public class SkinAssetsLoader extends SkinSDCardLoader {
-    @Override
-    protected String getSkinPath(Context context, String skinName) {
-        return copySkinFromAssets(context, skinName);
-    }
+/**
+ * Copyright (c) 2018, Bongmi
+ * All rights reserved
+ * Author: lishengjie@bongmi.com.
+ */
+public class Utils {
 
-    @Override
-    public String loadResInBackground(Context context, String resName) {
-        return null;
-    }
-
-    @Override
-    public String getTargetResourceEntryName(Context context, String skinName, int resId) {
-        return null;
-    }
-
-    @Override
-    public String getText(Context context, String skinName, int resId) {
-        return null;
-    }
-
-    @Override
-    public int getType() {
-        return SkinCompatManager.SKIN_LOADER_STRATEGY_ASSETS;
-    }
-
-    private String copySkinFromAssets(Context context, String name) {
+    public static String copySkinFromAssets(Context context, String name) {
         String skinPath = new File(SkinFileUtils.getSkinDir(context), name).getAbsolutePath();
         try {
             InputStream is = context.getAssets().open(

@@ -15,6 +15,7 @@ public class SkinPreference {
     private static final String KEY_SKIN_NAME = "skin-name";
     private static final String KEY_SKIN_STRATEGY = "skin-strategy";
     private static final String KEY_SKIN_USER_THEME = "skin-user-theme-json";
+    private static final String KEY_SKIN_EXTRA_RES = "skin-user-extra-res";
     private static SkinPreference sInstance;
     private final Context mApp;
     private final SharedPreferences mPref;
@@ -65,6 +66,15 @@ public class SkinPreference {
 
     public String getUserTheme() {
         return mPref.getString(KEY_SKIN_USER_THEME, "");
+    }
+
+    public SkinPreference setExtraResName(String extraResName) {
+        mEditor.putString(KEY_SKIN_EXTRA_RES, extraResName);
+        return this;
+    }
+
+    public String getExtraResName() {
+        return mPref.getString(KEY_SKIN_EXTRA_RES, "");
     }
 
     public void commitEditor() {
