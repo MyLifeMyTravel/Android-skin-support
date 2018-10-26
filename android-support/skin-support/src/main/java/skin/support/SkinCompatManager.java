@@ -339,9 +339,6 @@ public class SkinCompatManager extends SkinObservable {
     public AsyncTask load() {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
-        if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
-            return null;
-        }
         return loadSkin(skin, null, strategy);
     }
 
@@ -354,9 +351,6 @@ public class SkinCompatManager extends SkinObservable {
     public AsyncTask load(SkinLoaderListener listener) {
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
-        if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
-            return null;
-        }
         return loadSkin(skin, listener, strategy);
     }
 

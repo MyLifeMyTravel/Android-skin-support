@@ -6,10 +6,12 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import skin.support.R;
+import skin.support.content.res.SkinCompatExtraResources;
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatVectorResources;
 
@@ -138,7 +140,10 @@ public class SkinCompatTextHelper extends SkinCompatHelper {
             // TODO: HTC_U-3u OS:8.0上调用framework的getColorStateList方法，有可能抛出异常，暂时没有找到更好的解决办法.
             // issue: https://github.com/ximsfei/Android-skin-support/issues/110
             try {
-                String text = SkinCompatResources.getString(mView.getContext(), mTextResId);
+                String text = SkinCompatExtraResources.getString(mView.getContext(), mTextResId);
+                if (TextUtils.isEmpty(text)) {
+                    text = SkinCompatResources.getString(mView.getContext(), mTextResId);
+                }
                 mView.setText(text);
             } catch (Exception e) {
             }
