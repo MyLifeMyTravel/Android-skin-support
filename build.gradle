@@ -9,9 +9,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.6.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -36,12 +36,12 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 27
+    compileSdkVersion = 29
     minSdkVersion = 14
-    targetSdkVersion = 27
+    targetSdkVersion = 29
 
-    supportLibraryVersion = "27.1.1"
-    supportLibraryVersionInHost = "27.1.1"
+    supportLibraryVersion = "1.0.0"
+    supportLibraryVersionInHost = "1.0.0"
 
     glideVersion = "4.7.1"
 

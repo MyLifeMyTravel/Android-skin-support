@@ -1,6 +1,3 @@
-//include ':demo:skin-sample'
-//include ':demo:skin-app'
-//include ':demo:skin-night'
 include ':lollypop-demo:skin-app'
 include ':lollypop-demo:skin-string'
 include ':lollypop-demo:skin-purple'

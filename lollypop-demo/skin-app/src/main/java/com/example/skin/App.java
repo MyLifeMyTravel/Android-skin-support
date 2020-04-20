@@ -1,7 +1,8 @@
 package com.example.skin;
 
 import android.app.Application;
-import android.support.v7.app.AppCompatDelegate;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import skin.support.SkinCompatManager;
 import skin.support.app.SkinAppCompatViewInflater;

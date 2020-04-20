@@ -3,8 +3,9 @@ package skin.support.content.res;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.support.annotation.ColorRes;
 import android.text.TextUtils;
+
+import androidx.annotation.ColorRes;
 
 import org.json.JSONException;
 import org.json.JSONObject;

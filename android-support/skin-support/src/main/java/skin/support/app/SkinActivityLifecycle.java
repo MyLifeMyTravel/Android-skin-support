@@ -10,11 +10,13 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.core.view.LayoutInflaterCompat;
+
 import skin.support.SkinCompatManager;
 import skin.support.annotation.SkinStatusBarDisable;
 import skin.support.content.res.SkinCompatResources;

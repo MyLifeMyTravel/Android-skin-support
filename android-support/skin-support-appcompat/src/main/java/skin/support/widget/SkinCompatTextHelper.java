@@ -5,10 +5,11 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 import skin.support.R;
 import skin.support.content.res.SkinCompatExtraResources;

@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArrayMap;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.collection.ArrayMap;
+import androidx.core.view.ViewCompat;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

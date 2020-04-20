@@ -2,9 +2,10 @@ package skin.support.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.DrawableRes;
-import android.support.v7.widget.AppCompatCheckedTextView;
 import android.util.AttributeSet;
+
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatCheckedTextView;
 
 import skin.support.appcompat.R;
 import skin.support.content.res.SkinCompatResources;

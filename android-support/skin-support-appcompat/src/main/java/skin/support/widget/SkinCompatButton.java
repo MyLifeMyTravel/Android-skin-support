@@ -1,10 +1,12 @@
 package skin.support.widget;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.v7.appcompat.R;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatButton;
+
+import skin.support.appcompat.R;
 
 /**
  * Created by ximsfei on 17-1-11.
