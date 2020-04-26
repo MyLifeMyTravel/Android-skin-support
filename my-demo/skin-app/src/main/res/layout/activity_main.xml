@@ -6,6 +6,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/viewpager"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"
+        android:text="123" />
+
     <Button
         android:id="@+id/btn_load_skin"
         android:layout_width="match_parent"

@@ -40,8 +40,8 @@ ext {
     minSdkVersion = 14
     targetSdkVersion = 29
 
-    supportLibraryVersion = "1.0.0"
-    supportLibraryVersionInHost = "1.0.0"
+    supportAndroidX = "1.1.0"
+    supportGoogleMaterial = "1.1.0"
 
     glideVersion = "4.7.1"
 

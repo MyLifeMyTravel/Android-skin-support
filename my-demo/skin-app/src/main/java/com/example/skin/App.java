@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import skin.support.SkinCompatManager;
 import skin.support.app.SkinAppCompatViewInflater;
+import skin.support.design.app.SkinMaterialViewInflater;
 
 /**
  * Copyright (c) 2018, Bongmi
@@ -20,8 +21,9 @@ public class App extends Application {
 
         SkinCompatManager.withoutActivity(this)
                 .addStrategy(new CustomNoneLoader())
-                .addStrategy(new CustomAssetsCardLoader())          // 自定义加载策略，指定SDCard路径
-                .addInflater(new SkinAppCompatViewInflater())   // 基础控件换肤
+                .addStrategy(new CustomAssetsCardLoader())// 自定义加载策略，指定SDCard路径
+                .addInflater(new SkinAppCompatViewInflater())//基础控件换肤
+                .addInflater(new SkinMaterialViewInflater())//Material控件换肤
                 .load();
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }

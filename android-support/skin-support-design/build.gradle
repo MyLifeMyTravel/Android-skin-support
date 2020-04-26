@@ -19,8 +19,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:${rootProject.supportLibraryVersion}"
-    implementation "com.google.android.material:material:${rootProject.supportLibraryVersion}"
+    implementation "androidx.appcompat:appcompat:${rootProject.supportAndroidX}"
+    implementation "com.google.android.material:material:${rootProject.supportGoogleMaterial}"
     implementation project(':android-support:skin-support')
     implementation project(':android-support:skin-support-appcompat')
 }

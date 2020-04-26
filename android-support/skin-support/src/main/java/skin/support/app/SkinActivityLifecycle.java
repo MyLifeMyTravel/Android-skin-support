@@ -1,9 +1,5 @@
 package skin.support.app;
 
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.util.WeakHashMap;
-
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -16,6 +12,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.core.view.LayoutInflaterCompat;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
+import java.util.WeakHashMap;
 
 import skin.support.SkinCompatManager;
 import skin.support.annotation.SkinStatusBarDisable;
@@ -150,7 +150,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
             isSupportSkin = ((SkinCompatStatusBarSupportable) activity).isSupportStatusBar();
         }
         if (!isSupportSkin || activity.getClass().getAnnotation(SkinStatusBarDisable.class) != null
-            || !SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
+                || !SkinCompatManager.getInstance().isSkinStatusBarColorEnable()) {
             return;
         }
         try {

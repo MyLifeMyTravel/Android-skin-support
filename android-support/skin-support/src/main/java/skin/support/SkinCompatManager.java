@@ -25,13 +25,13 @@ import skin.support.app.SkinActivityLifecycle;
 import skin.support.app.SkinLayoutInflater;
 import skin.support.app.SkinWrapper;
 import skin.support.content.res.SkinCompatExtraResources;
+import skin.support.content.res.SkinCompatResources;
 import skin.support.load.SkinAssetsLoader;
 import skin.support.load.SkinBuildInLoader;
 import skin.support.load.SkinNoneLoader;
 import skin.support.load.SkinPrefixBuildInLoader;
 import skin.support.observe.SkinObservable;
 import skin.support.utils.SkinPreference;
-import skin.support.content.res.SkinCompatResources;
 import skin.support.widget.SkinCompatActivitySupportable;
 import skin.support.widget.SkinCompatSupportable;
 
@@ -163,6 +163,7 @@ public class SkinCompatManager extends SkinObservable {
      * @param context
      * @return
      */
+    @Deprecated
     public static SkinCompatManager init(Context context) {
         if (sInstance == null) {
             synchronized (SkinCompatManager.class) {
@@ -180,7 +181,7 @@ public class SkinCompatManager extends SkinObservable {
     }
 
     /**
-     * 初始化换肤框架，监听Activity生命周期. 通过该方法初始化，应用中Activity无需继承{@link skin.support.app.SkinCompatActivity}.
+     * 初始化换肤框架，监听Activity生命周期. 通过该方法初始化.
      *
      * @param application 应用Application.
      * @return
