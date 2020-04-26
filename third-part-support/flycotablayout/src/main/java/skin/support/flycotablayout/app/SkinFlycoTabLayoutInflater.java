@@ -1,9 +1,10 @@
 package skin.support.flycotablayout.app;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import skin.support.app.SkinLayoutInflater;
 import skin.support.flycotablayout.widget.SkinCommonTabLayout;

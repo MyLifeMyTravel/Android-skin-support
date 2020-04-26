@@ -1,8 +1,9 @@
 package com.ximsfei.skindemo.flycotablayout.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ximsfei.skindemo.R;
 import com.ximsfei.skindemo.settings.SettingsActivity;

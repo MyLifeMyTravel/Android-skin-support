@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
+
+import androidx.cardview.widget.CardView;
 
 import skin.support.cardview.R;
 import skin.support.content.res.SkinCompatResources;

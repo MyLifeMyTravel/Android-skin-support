@@ -3,10 +3,10 @@ package skin.support.design.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.AttributeSet;
 
-import skin.support.content.res.SkinCompatResources;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import skin.support.content.res.SkinCompatVectorResources;
 import skin.support.design.R;
 import skin.support.widget.SkinCompatBackgroundHelper;

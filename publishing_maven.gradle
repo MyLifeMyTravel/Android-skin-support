@@ -2,7 +2,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 version = publishVersion
-group = "lollypop.skin.support"
+group = "skin.support"
 
 def siteUrl = 'https://github.com/MyLifeMyTravel/Android-skin-support'
 def gitUrl = 'https://github.com/MyLifeMyTravel/Android-skin-support.git'

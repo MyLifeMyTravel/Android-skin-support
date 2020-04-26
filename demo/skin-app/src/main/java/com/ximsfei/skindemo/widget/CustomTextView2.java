@@ -1,9 +1,10 @@
 package com.ximsfei.skindemo.widget;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;

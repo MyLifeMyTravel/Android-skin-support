@@ -2,8 +2,9 @@ package skin.support.design.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
+
+import com.google.android.material.tabs.TabLayout;
 
 import skin.support.content.res.SkinCompatResources;
 import skin.support.design.R;

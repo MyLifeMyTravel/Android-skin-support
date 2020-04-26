@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StyleRes;
-import android.support.design.widget.NavigationView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StyleRes;
+
+import com.google.android.material.navigation.NavigationView;
 
 import skin.support.content.res.SkinCompatResources;
 import skin.support.content.res.SkinCompatV7ThemeUtils;

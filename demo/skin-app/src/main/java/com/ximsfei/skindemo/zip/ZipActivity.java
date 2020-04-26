@@ -1,9 +1,10 @@
 package com.ximsfei.skindemo.zip;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;

@@ -2,9 +2,6 @@ package com.ximsfei.skindemo.mdtab;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
@@ -12,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
 import com.ximsfei.skindemo.settings.SettingsActivity;

@@ -1,7 +1,8 @@
 package com.ximsfei.skin.sample;
 
 import android.app.Application;
-import android.support.v7.app.AppCompatDelegate;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.ximsfei.skin.sample.loader.CustomSDCardLoader;
 
@@ -30,7 +31,7 @@ public class SkinApp extends Application {
                 // 关闭windowBackground换肤
                 .setSkinWindowBackgroundEnable(false)
 //                .setSkinAllActivityEnable(false)                // true: 默认所有的Activity都换肤; false: 只有实现SkinCompatSupportable接口的Activity换肤
-                .loadSkin();
+                .load();
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 }

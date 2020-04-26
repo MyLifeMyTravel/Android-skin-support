@@ -1,8 +1,9 @@
 package skin.support.design.widget;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;

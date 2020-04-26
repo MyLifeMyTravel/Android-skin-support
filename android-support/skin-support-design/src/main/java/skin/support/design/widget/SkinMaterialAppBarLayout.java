@@ -1,8 +1,9 @@
 package skin.support.design.widget;
 
 import android.content.Context;
-import android.support.design.widget.AppBarLayout;
 import android.util.AttributeSet;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;

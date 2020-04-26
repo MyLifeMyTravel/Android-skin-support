@@ -16,6 +16,11 @@ public class CustomSDCardLoader extends SkinSDCardLoader {
     }
 
     @Override
+    public String loadResInBackground(Context context, String resName) {
+        return null;
+    }
+
+    @Override
     public int getType() {
         return SKIN_LOADER_STRATEGY_SDCARD;
     }

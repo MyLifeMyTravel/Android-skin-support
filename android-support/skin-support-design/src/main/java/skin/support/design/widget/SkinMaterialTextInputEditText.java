@@ -1,11 +1,13 @@
 package skin.support.design.widget;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.appcompat.R;
 import android.util.AttributeSet;
 
+import androidx.annotation.DrawableRes;
+
+import com.google.android.material.textfield.TextInputEditText;
+
+import skin.support.design.R;
 import skin.support.widget.SkinCompatBackgroundHelper;
 import skin.support.widget.SkinCompatSupportable;
 import skin.support.widget.SkinCompatTextHelper;

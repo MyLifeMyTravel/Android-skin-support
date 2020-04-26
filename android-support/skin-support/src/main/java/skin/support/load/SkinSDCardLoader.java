@@ -36,6 +36,11 @@ public abstract class SkinSDCardLoader implements SkinLoaderStrategy {
     protected abstract String getSkinPath(Context context, String skinName);
 
     @Override
+    public String loadResInBackground(Context context, String resName) {
+        return null;
+    }
+
+    @Override
     public String getTargetResourceEntryName(Context context, String skinName, int resId) {
         return null;
     }

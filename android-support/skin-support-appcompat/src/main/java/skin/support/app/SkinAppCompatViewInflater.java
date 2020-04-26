@@ -48,7 +48,6 @@ public class SkinAppCompatViewInflater implements SkinLayoutInflater, SkinWrappe
     @Override
     public View createView(Context context, String name, AttributeSet attrs) {
         View view = createViewFromFV(context, name, attrs);
-
         if (view == null) {
             view = createViewFromV7(context, name, attrs);
         }

@@ -1,9 +1,10 @@
 package com.ximsfei.skindemo.test;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.ViewStub;
+
+import androidx.annotation.Nullable;
 
 import com.ximsfei.skindemo.BaseActivity;
 import com.ximsfei.skindemo.R;
